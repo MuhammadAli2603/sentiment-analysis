@@ -1,6 +1,9 @@
-IMDB Sentiment Analyzer: TF-IDF & Logistic Regression
-*License:* MIT
-*Stack:* Python · scikit-learn · NLTK · Joblib · Matplotlib · Seaborn
+# 🎬 IMDB Sentiment Analyzer: TF‑IDF → Logistic Regression Pipeline
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yourusername/your-repo-name/blob/main/notebook.ipynb)  
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
+[![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)]() [![scikit-learn](https://img.shields.io/badge/scikit--learn-%3E%3D1.0-orange.svg)]() [![NLTK](https://img.shields.io/badge/NLTK-%3E%3D3.7-purple.svg)]() [![Joblib](https://img.shields.io/badge/Joblib-%3E%3D1.0-gray.svg)]() [![Matplotlib](https://img.shields.io/badge/Matplotlib-%3E%3D3.5-red.svg)]() [![Seaborn](https://img.shields.io/badge/Seaborn-%3E%3D0.11-teal.svg)]()
+---
+## 🚀 Project Overview
 🚀 Project Overview
 An end-to-end sentiment-analysis pipeline on the IMDB movie-review dataset, implemented in a single Colab notebook and modularized for local runs:
 
