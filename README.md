@@ -1,38 +1,71 @@
-Sentiment Analysis with Machine Learning
-This project performs sentiment analysis using a machine learning model trained on text data. It classifies text into sentiment categories such as positive, negative, or neutral.
+IMDB Sentiment Analyzer: TF-IDF & Logistic Regression
+*License:* MIT
+*Stack:* Python · scikit-learn · NLTK · Joblib · Matplotlib · Seaborn
+🚀 Project Overview
+An end-to-end sentiment-analysis pipeline on the IMDB movie-review dataset, implemented in a single Colab notebook and modularized for local runs:
 
-📌 Features
-Preprocessing of textual data (tokenization, vectorization)
+- Preprocessing: NLTK-powered tokenization, stop-word removal, stemming, and text-cleaning.
+- Features: TF-IDF vectorization to capture term importance.
+- Model: Logistic Regression with class_weight='balanced' for robust performance.
+- Evaluation: Classification report and confusion-matrix visualizations.
+- Inference: Simple script to drop in your own review text and get a positive/negative prediction.
+📂 Repository Structure
+~~~text
+imdb-sentiment-analysis/
+├── Untitled16.ipynb ← All-in-one Colab demo
+├── src/
+│   ├── preprocess.py ← Text-cleaning & tokenization
+│   ├── train.py ← Train, evaluate, and save model
+│   └── predict.py ← Load artifacts & predict on new text
+├── requirements.txt ← Pinned dependencies
+├── .gitignore ← Excludes venv, caches, data, artifacts
+└── LICENSE ← MIT License
 
-Model training and evaluation (Logistic Regression)
+~~~
+▶ Quickstart
+1️⃣ Run in Colab (no setup required)
+1.	Click the Open in Colab badge above.
+2.	Runtime → Run all.
+3.	Watch each section:
+•	• Data load & split
+•	• Preprocessing
+•	• TF-IDF + training (3 epochs baseline)
+•	• Evaluation (report & heatmap)
+•	• Save *.joblib artifacts
+4.	Done! No local GPU or installs needed.
+2️⃣ Local Setup
+bash
+git clone https://github.com/YourUsername/imdb-sentiment-analysis.git
+cd imdb-sentiment-analysis
 
-Prediction on new/unseen text input
+# create & activate virtual env
+python3 -m venv .venv && source .venv/bin/activate
 
-Data visualization using word clouds and plots
-🚀 How to Use
-Follow the steps:
+pip install --upgrade pip
+pip install -r requirements.txt
+bash
+python src/train.py \
+  --data-path path/to/IMDBDataset.csv \
+  --model-out sentiment_lr_model.joblib \
+  --vectorizer-out tfidf_vectorizer.joblib
+bash
+python src/predict.py \
+  --model sentiment_lr_model.joblib \
+  --vectorizer tfidf_vectorizer.joblib \
+  --text "That movie was phenomenal! Best I've seen all year."
+📈 Sample Results
+Stage	Accuracy
+LogisticRegression (base)	0.88
+LogisticRegression (tuned)	0.90
+⚠ Critical Considerations
+•	- **Vocabulary Size:** TF-IDF may blow up memory on rare tokens. Consider trimming max_features or using hashing.
+•	- **Imbalance:** We use class_weight='balanced', but you might try focal loss or SMOTE for fine-tuning.
+•	- **Model Choice:** A simple linear model is fast—swap in an SVM or even BERT for higher accuracy.
+•	- **Preprocessing Sanity:** Always sanity-check on random text or blanks to catch tokenization bugs.
+🤝 Contributing
+1. Fork this repo
+2. Create a new branch (git checkout -b feat/my-feature)
+3. Commit your changes (git commit -m "Add awesome feature")
+4. Push (git push origin feat/my-feature)
+5. Open a Pull Request
 
-Load and preprocess the dataset
-
-Train and evaluate the model
-
-Run predictions on new text
-
-🧠 Model
-Type: Logistic Regression (can be replaced with other models)
-
-Input: Raw text
-
-Output: Sentiment class label
-
-📊 Example
-python
-Copy
-predict_sentiment("I love this product!")
-# Output: Positive
-📌 Future Improvements
-Deploy as a web app using Streamlit or Flask
-
-Add support for multiple models
-
-Improve accuracy with deep learning (e.g., LSTM, BERT)
